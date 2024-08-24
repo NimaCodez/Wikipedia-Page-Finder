@@ -28,16 +28,21 @@ export async function searchWiki(query: string): Promise<InlineQueryResult[]> {
 					id: String(index),
 					title: title,
 					input_message_content: {
-						message_text: `Result you were looking for: [${title}](${links[index]})`,
+						message_text: `✅ Read more about: [${title}](${links[index]}) \n Powered By: @Weekipediabot 🌐`,
 						parse_mode: 'Markdown',
 					},
 					description: descriptions[index] || `Learn more about ${title}`,
 					thumbnail_url: imageUrl,
 					url: links[index],
 					hide_url: true,
+					reply_markup: {
+						inline_keyboard: [
+							[{text: 'Go to your result page!', url: links[index]}],
+						]
+					}
 				};
 			}),
 	);
-
+	
 	return inlineResults;
 }
