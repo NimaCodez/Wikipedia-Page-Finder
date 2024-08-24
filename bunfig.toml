@@ -1,3 +1,0 @@
-[scripts]
-dev = "bun src/bot.ts"
-watch = "bun --watch src"

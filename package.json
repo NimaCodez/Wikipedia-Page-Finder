@@ -5,14 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc",
-    "start": "npm run build && node dist/bot.js"
+    "dev": "bun --watch --bun src/bot.ts",
+    "start": "bun --watch --bun src/bot.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@telegraf/types": "^7.1.0",
     "@types/node": "^22.5.0",
     "axios": "^1.7.5",
     "dotenv": "^16.4.5",
