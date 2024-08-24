@@ -1,15 +1,2 @@
-# weekipediabot
-
-To install dependencies:
-
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run index.js
-```
-
-This project was created using `bun init` in bun v1.1.0. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+# Wikipedia-Page-Finder
+A Telegram bot to help you send the link you want faster without being needed to get out from it.
