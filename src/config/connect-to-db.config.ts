@@ -1,5 +1,5 @@
-import { AppDataSource } from "./typeorm.config";
+import { AppDataSource } from './typeorm.config';
 
 export async function connectToDb() {
-    await AppDataSource.initialize()
-} 
+  await AppDataSource.initialize();
+}
