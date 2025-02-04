@@ -7,12 +7,12 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity({ name: 'users' })
+@Entity('users')
 export class User {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn('uuid')
   id: number;
   @Column({ unique: true })
-  user_id: number;
+  chat_id: number;
   @Column()
   first_name: string;
   @Column({ nullable: true })

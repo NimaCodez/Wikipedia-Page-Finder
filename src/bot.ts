@@ -1,22 +1,23 @@
 import { configDotenv } from 'dotenv';
 import { join } from 'path';
 import { Telegraf } from 'telegraf';
-import { searchWiki } from './modules/search-wiki';
+import { connectToDb } from './config/connect-to-db.config';
 import { AppDataSource } from './config/typeorm.config';
 import { User } from './entities/user.entity';
-import { connectToDb } from './config/connect-to-db.config';
-import { BotAnalytics } from './entities/bot.entity';
-configDotenv({ path: join(process.cwd(), '.env') });
-
-const bot = new Telegraf(process.env.BOT_TOKEN);
+import { searchWiki } from './modules/search-wiki';
 connectToDb();
+
+configDotenv({
+  path: join(__dirname, '..', '.env'),
+});
+const bot = new Telegraf(process.env.BOT_TOKEN!);
 
 bot.command(/start|help/, async ctx => {
   const userRepository = AppDataSource.getRepository(User);
-  let user = await userRepository.findOneBy({ user_id: ctx.from.id });
+  let user = await userRepository.findOneBy({ chat_id: ctx.from.id });
   if (!user) {
     user = userRepository.create({
-      user_id: ctx.from.id,
+      chat_id: ctx.from.id,
       first_name: ctx.from.first_name || '',
       last_name: ctx.from.last_name || '',
       username: ctx.from.username || '',
